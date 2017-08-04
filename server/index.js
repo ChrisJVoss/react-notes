@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const notes = require('./knex')
@@ -30,5 +31,5 @@ app.post('/notes', (req, res) => {
 })
 
 app.listen(process.env.MY_SECRET_PORTAL, () => {
-  console.log('Listening on 3000!')
+  console.log('Listening on supersecretportal!')
 })
