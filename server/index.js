@@ -29,6 +29,6 @@ app.post('/notes', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(process.env.MY_SECRET_PORTAL, () => {
   console.log('Listening on 3000!')
 })
