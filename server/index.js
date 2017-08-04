@@ -14,9 +14,18 @@ app.use(staticMiddleware)
 app.use(jsonParser)
 
 app.get('/notes', (req, res) => {
+  console.log(notes.noteList())
   notes.noteList()
     .then(result => {
+      console.log(result)
       res.json(result)
+    })
+})
+
+app.post('/notes', (req, res) => {
+  notes.add(req.body)
+    .then(() => {
+      console.log(notes.noteList())
     })
 })
 
