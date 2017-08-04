@@ -10,6 +10,14 @@ function noteList() {
   return query
 }
 
+function add(note) {
+  const query = knex
+    .insert(note)
+    .into('notes')
+  return query
+}
+
 module.exports = {
-  noteList: noteList
+  noteList: noteList,
+  add: add
 }
