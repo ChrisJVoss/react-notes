@@ -1,6 +1,7 @@
+require('dotenv').config()
 const knex = require('knex') ({
   dialect: 'pg',
-  connection: 'postgres://localhost:5432/notes'
+  connection: process.env.DATABASE_URL
 })
 
 function noteList() {
