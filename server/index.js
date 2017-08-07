@@ -15,7 +15,6 @@ app.use(staticMiddleware)
 app.use(jsonParser)
 
 app.get('/notes', (req, res) => {
-  console.log(notes.noteList())
   notes.noteList()
     .then(result => {
       console.log(result)
