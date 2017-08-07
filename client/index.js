@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -33,19 +34,19 @@ class AddNote extends React.Component {
         body: JSON.stringify(newNote)
       }
       return fetch('http://localhost:3000/notes', fetchData)
-      .then(fetch('http://localhost:3000/notes')
-        .then(response => response.json())
-        .then(notes => {
-          this.props.updateState(notes)
-        })
-      )
     }
     event.preventDefault()
     const formData = new FormData(event.target)
     let formValue = {
       note: formData.get('note')
     }
+    const getNewNoteList = () => {
+      fetch('http://localhost:3000/notes')
+        .then(response => response.json())
+        .then(notes => this.props.updateState(notes))
+    }
     postNote(formValue)
+      .then(getNewNoteList)
   }
   render() {
     return (
