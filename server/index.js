@@ -15,10 +15,8 @@ app.use(staticMiddleware)
 app.use(jsonParser)
 
 app.get('/notes', (req, res) => {
-  console.log(notes.noteList())
   notes.noteList()
     .then(result => {
-      console.log(result)
       res.json(result)
     })
 })
@@ -26,10 +24,10 @@ app.get('/notes', (req, res) => {
 app.post('/notes', (req, res) => {
   notes.add(req.body)
     .then(() => {
-      console.log(notes.noteList())
+      res.sendStatus(200)
     })
 })
 
-app.listen(process.env.MY_SECRET_PORTAL, () => {
-  console.log('Listening on supersecretportal!')
+app.listen(process.env.PORT, () => {
+  console.log('Listening')
 })
