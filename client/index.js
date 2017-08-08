@@ -7,7 +7,7 @@ class NoteList extends React.Component {
     super(props)
   }
   componentDidMount() {
-    fetch('http://localhost:3000/notes')
+    fetch('/notes')
       .then(response => response.json())
       .then(notes => this.props.updateState(notes))
   }
@@ -33,7 +33,7 @@ class AddNote extends React.Component {
         },
         body: JSON.stringify(newNote)
       }
-      return fetch('http://localhost:3000/notes', fetchData)
+      return fetch('/notes', fetchData)
     }
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -41,7 +41,7 @@ class AddNote extends React.Component {
       note: formData.get('note')
     }
     const getNewNoteList = () => {
-      fetch('http://localhost:3000/notes')
+      fetch('/notes')
         .then(response => response.json())
         .then(notes => this.props.updateState(notes))
     }
